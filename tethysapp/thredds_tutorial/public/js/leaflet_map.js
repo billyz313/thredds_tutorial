@@ -56,12 +56,6 @@ var LEAFLET_MAP = (function() {
         });
 
         // Define what happens when the variable select input changes
-        $('#variable').on('change', function() {
-            m_curr_variable = $('#variable').val();
-
-            // Update the styles
-            update_style_control();
-        });
 
         // Define what happens when the style select input changes
         $('#style').on('change', function() {
@@ -201,6 +195,7 @@ var LEAFLET_MAP = (function() {
 
     // Update the available style options on the style control
     update_style_control = function() {
+        $('#style').select2().empty();
         let first_option = true;
         for (var style in m_layer_meta[m_curr_variable].styles) {
             if (first_option) {
